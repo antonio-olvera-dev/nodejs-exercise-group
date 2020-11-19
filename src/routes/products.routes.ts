@@ -8,6 +8,7 @@ class ProductsRoutes {
 
     constructor() {
         this.router.get('/', productsController.index);
+        this.router.get('/:id', productsController.showById);
     }
 }
 

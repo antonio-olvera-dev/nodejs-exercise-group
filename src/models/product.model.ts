@@ -24,6 +24,10 @@ Product.init({
         type: DataTypes.DECIMAL(5,2),
         allowNull: false
     },
+    providerId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     createdAt: {
         type: DataTypes.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
