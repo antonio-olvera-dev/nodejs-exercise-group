@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { Op } from 'sequelize';
+import { Product } from '../models/product.model';
 import { Provider } from '../models/provider.model';
 
 class ProvidersController {
@@ -7,8 +8,11 @@ class ProvidersController {
     public async index(req: Request, res: Response) {
 
         try {
+            
             const providers = await Provider.findAll({
-                raw: true
+                raw: true,
+                include:[Product],
+                nest:true
             });
             console.log(providers);
 

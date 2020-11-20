@@ -1,10 +1,12 @@
 import { Model, DataType, Sequelize, DataTypes } from 'sequelize';
 import { database } from '../databases';
+import { Provider } from './provider.model';
 
 export class Product extends Model {
     public id!: number;
     public title!: string;
     public price!: number;
+    public providerId!:number;
     public createdAt!: Date;
     public updatedAt!: Date;
 }
@@ -36,7 +38,11 @@ Product.init({
         type: DataTypes.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     }
-},{
+}
+,{
     tableName: 'products',
     sequelize: database
 });
+
+Product.belongsTo(Provider,{foreignKey: 'providerId'}); 
+Provider.hasMany(Product);
